@@ -10,7 +10,11 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 // Position the camera
-camera.position.z = 20;
+camera.position.x = 0;
+camera.position.y = 20;
+camera.position.z = -20;
+
+camera.lookAt(0, 0, 0);
 
 // Add lighting (optional but recommended)
 const light = new THREE.AmbientLight(0x404040); // soft white light
