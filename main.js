@@ -55,7 +55,7 @@ animate();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let intersects = [];
-let laptop; 
+let laptop, photo; 
 
 window.addEventListener('click', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -68,6 +68,9 @@ window.addEventListener('click', (event) => {
         const object = intersects[0].object;
         if (object === laptop) {
             openPopup();  // Function to open the popup
+        }
+        if (object === photo){
+            openPopup();
         }
     }
 });
@@ -103,8 +106,11 @@ loader.load('edit4.glb', function (gltf) {
             if (node.material) {
                 node.material.needsUpdate = true;
             }
-            if (node.name == 'laptopscreen' || node.name == 'laptop.001'|| node.name == 'laptop.002') {  // Ensure 'Laptop' matches the name in your Blender file
+            if (node.name === 'laptopscreen') {  // Ensure 'Laptop' matches the name in your Blender file //|| node.name === 'laptop.001'|| node.name === 'laptop.002'
                 laptop = node;
+            }
+            if (node.name === 'photoscreen'){
+                photo = node;
             }
         }
     });
