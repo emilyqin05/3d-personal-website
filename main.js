@@ -52,6 +52,38 @@ function animate() {
 }
 animate();
 
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let intersects = [];
+let laptop; 
+
+window.addEventListener('click', (event) => {
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+    raycaster.setFromCamera(mouse, camera);
+    intersects = raycaster.intersectObjects(scene.children);
+
+    if (intersects.length > 0) {
+        const object = intersects[0].object;
+        if (object === laptop) {
+            openPopup();  // Function to open the popup
+        }
+    }
+});
+
+function openPopup() {
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '20px';
+    popup.style.left = '20px';
+    popup.style.padding = '10px';
+    popup.style.backgroundColor = 'white';
+    popup.style.border = '1px solid black';
+    popup.textContent = 'You clicked on the laptop!';
+    document.body.appendChild(popup);
+}
+
 
 // Instantiate a loader
 const loader = new GLTFLoader();
@@ -70,6 +102,9 @@ loader.load('edit4.glb', function (gltf) {
 
             if (node.material) {
                 node.material.needsUpdate = true;
+            }
+            if (node.name == 'laptopscreen' || node.name == 'laptop.001'|| node.name == 'laptop.002') {  // Ensure 'Laptop' matches the name in your Blender file
+                laptop = node;
             }
         }
     });
