@@ -26,6 +26,21 @@ const pointLight = new THREE.PointLight(0xffffff, 1.5);
 pointLight.position.set(-10, 10, 10);
 scene.add(pointLight);
 
+// Handle scroll events to zoom in/out
+window.addEventListener('wheel', (event) => {
+    const zoomSpeed = 0.5; // Adjust this value to control zoom speed
+    if (event.deltaY > 0) {
+        // Scrolling down - zoom in
+        camera.position.z -= zoomSpeed;
+    } else if (event.deltaY < 0) {
+        // Scrolling up - zoom out
+        camera.position.z += zoomSpeed;
+    }
+
+    // Optional: Clamp the camera's y position to prevent excessive zooming
+    camera.position.z = THREE.MathUtils.clamp(camera.position.z, 5, 50); // Adjust min and max values as needed
+});
+
 // Animation loop
 function animate() {
     requestAnimationFrame(animate);
@@ -60,6 +75,7 @@ loader.load('edit3.glb', function (gltf) {
 }, function (error) {
     console.log('An error happened', error);
 });
+
 /*
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
