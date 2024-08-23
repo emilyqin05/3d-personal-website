@@ -55,7 +55,7 @@ animate();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let intersects = [];
-let laptop, photo; 
+let laptop, photo, linkedInPen; 
 
 window.addEventListener('click', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -72,8 +72,15 @@ window.addEventListener('click', (event) => {
         if (object === photo){
             openPopup();
         }
+        if (object === linkedInPen){
+            openLinkedIn();
+        }
     }
 });
+
+function openLinkedIn(){
+    window.open("https://www.linkedin.com/in/emily-qin/");
+}
 
 function openPopup() {
     const popup = document.createElement('div');
@@ -111,6 +118,9 @@ loader.load('edit4.glb', function (gltf) {
             }
             if (node.name === 'photoscreen'){
                 photo = node;
+            }
+            if (node.name === 'linkedin'){
+                linkedInPen = node;
             }
         }
     });
