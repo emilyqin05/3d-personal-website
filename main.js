@@ -12,7 +12,7 @@ renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
 // Position the camera
-camera.position.set = (0, 20, 20);
+camera.position.set(0, 7, 40);
 camera.lookAt(0, 0, 0);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
@@ -31,14 +31,18 @@ window.addEventListener('wheel', (event) => {
     const zoomSpeed = 0.5; // Adjust this value to control zoom speed
     if (event.deltaY > 0) {
         // Scrolling down - zoom in
+		camera.position.y -= zoomSpeed;
         camera.position.z -= zoomSpeed;
     } else if (event.deltaY < 0) {
         // Scrolling up - zoom out
+		camera.position.y += zoomSpeed;
         camera.position.z += zoomSpeed;
     }
 
     // Optional: Clamp the camera's y position to prevent excessive zooming
-    camera.position.z = THREE.MathUtils.clamp(camera.position.z, 5, 50); // Adjust min and max values as needed
+    camera.position.y = THREE.MathUtils.clamp(camera.position.y, 5, 50); // Adjust min and max values as needed
+	camera.position.z = THREE.MathUtils.clamp(camera.position.z, 5, 50); // Adjust min and max values as needed
+
 });
 
 // Animation loop
