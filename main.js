@@ -62,7 +62,7 @@ const loader = new GLTFLoader();
 // loader.setDRACOLoader( dracoLoader );
 
 // Load a glTF resource
-loader.load('edit3.glb', function (gltf) {
+loader.load('edit4.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
             node.castShadow = true;
