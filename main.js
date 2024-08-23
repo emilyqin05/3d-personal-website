@@ -12,8 +12,8 @@ renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
 // Position the camera
-camera.position.set(0, 7, 40);
-camera.lookAt(0, 0, 0);
+camera.position.set(0, 15, 15);
+camera.lookAt(0, 4, 0);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
@@ -40,8 +40,8 @@ window.addEventListener('wheel', (event) => {
     }
 
     // Optional: Clamp the camera's y position to prevent excessive zooming
-    camera.position.y = THREE.MathUtils.clamp(camera.position.y, 5, 50); // Adjust min and max values as needed
-	camera.position.z = THREE.MathUtils.clamp(camera.position.z, 5, 50); // Adjust min and max values as needed
+    camera.position.y = THREE.MathUtils.clamp(camera.position.y, -2, 15); // Adjust min and max values as needed
+	camera.position.z = THREE.MathUtils.clamp(camera.position.z, -2, 15); // Adjust min and max values as needed
 
 });
 
@@ -73,6 +73,7 @@ loader.load('edit3.glb', function (gltf) {
             }
         }
     });
+	gltf.scene.position.set(0, -10, -15); // Adjust this to the desired position
     scene.add(gltf.scene);
 }, function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
