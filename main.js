@@ -55,7 +55,7 @@ animate();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let intersects = [];
-let laptop, photo, linkedInPen; 
+let laptop, photo, linkedInPen, githubPen; 
 
 window.addEventListener('click', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -75,11 +75,18 @@ window.addEventListener('click', (event) => {
         if (object === linkedInPen){
             openLinkedIn();
         }
+        if (object === githubPen){
+            openGithub();
+        }
     }
 });
 
 function openLinkedIn(){
     window.open("https://www.linkedin.com/in/emily-qin/");
+}
+
+function openGithub(){
+    window.open("https://github.com/emilyqin05");
 }
 
 function openPopup() {
@@ -121,6 +128,9 @@ loader.load('edit4.glb', function (gltf) {
             }
             if (node.name === 'linkedin'){
                 linkedInPen = node;
+            }
+            if (node.name === 'github'){
+                githubPen = node;
             }
         }
     });
