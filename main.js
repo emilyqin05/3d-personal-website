@@ -89,17 +89,78 @@ function openGithub(){
     window.open("https://github.com/emilyqin05");
 }
 
-function openPopup() {
+// function openPopup() {
+//     const popup = document.createElement('div');
+//     popup.style.position = 'fixed';
+//     popup.style.top = '20px';
+//     popup.style.left = '20px';
+//     popup.style.padding = '10px';
+//     popup.style.backgroundColor = 'white';
+//     popup.style.border = '1px solid black';
+//     popup.textContent = 'You clicked on the laptop!';
+//     document.body.appendChild(popup);
+// }
+
+function openPopup(objectName) {
+    // Create the popup container
     const popup = document.createElement('div');
     popup.style.position = 'fixed';
-    popup.style.top = '20px';
-    popup.style.left = '20px';
-    popup.style.padding = '10px';
+    popup.style.top = '10%';
+    popup.style.left = '10%';
+    popup.style.width = '80%';
+    popup.style.height = '80%';
+    popup.style.padding = '20px';
     popup.style.backgroundColor = 'white';
-    popup.style.border = '1px solid black';
-    popup.textContent = 'You clicked on the laptop!';
+    popup.style.border = '2px solid black';
+    popup.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+    popup.style.zIndex = '1000';
+    popup.style.overflow = 'auto';  // Allows scrolling if content overflows
+    popup.style.display = 'flex';
+    popup.style.flexDirection = 'column';
+    popup.style.alignItems = 'center';
+    popup.style.justifyContent = 'center';
+
+    // Create and style the close button
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '10px';
+    closeButton.style.right = '10px';
+    closeButton.style.padding = '10px 20px';
+    closeButton.style.backgroundColor = '#f44336';
+    closeButton.style.color = 'white';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(popup);
+    });
+
+    // Add an image
+    const img = document.createElement('img');
+    img.src = 'emilyPhoto.JPG';  // Replace with your image path
+    img.alt = objectName;
+    img.style.maxWidth = '30%';
+    img.style.height = 'auto';
+    img.style.marginBottom = '20px';
+
+    // Add text content
+    const text = document.createElement('p');
+    text.textContent = `This is the about page. Here you can add any information related to it.`;
+    text.style.textAlign = 'center';
+    text.style.fontSize = '18px';
+    text.style.lineHeight = '1.5';
+    text.style.margin = '0';
+
+    // Append elements to the popup
+    popup.appendChild(closeButton);
+    popup.appendChild(img);
+    popup.appendChild(text);
+
+    // Append the popup to the body
     document.body.appendChild(popup);
 }
+
 
 
 // Instantiate a loader
@@ -141,30 +202,3 @@ loader.load('edit4.glb', function (gltf) {
 }, function (error) {
     console.log('An error happened', error);
 });
-
-/*
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-
-const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth, window.innerHeight );
-renderer.setAnimationLoop( animate );
-document.body.appendChild( renderer.domElement );
-
-const geometry = new THREE.BoxGeometry( 1, 1, 1 );
-const material = new THREE.MeshBasicMaterial( { color: 0xFF0000 } );
-const cube = new THREE.Mesh( geometry, material );
-scene.add( cube );
-
-camera.position.z = 5;
-
-function animate() {
-
-	cube.rotation.x += 0.01;
-	cube.rotation.y += 0.01;
-
-	renderer.render( scene, camera );
-
-}
-
-*/
