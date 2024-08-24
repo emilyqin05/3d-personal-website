@@ -67,6 +67,7 @@ window.addEventListener('click', (event) => {
     raycaster.setFromCamera(mouse, camera);
     intersects = raycaster.intersectObjects(scene.children);
 
+
     if (intersects.length > 0) {
         const object = intersects[0].object;
         if (object === laptop) {
@@ -93,20 +94,23 @@ function openResume(){
     // Create the popup container
     const popup = document.createElement('div');
     popup.style.position = 'fixed';
-    popup.style.top = '10%';
-    popup.style.left = '10%';
-    popup.style.width = '80%';
-    popup.style.height = '80%';
-    popup.style.padding = '20px';
+    popup.style.top = '50%';
+    popup.style.left = '50%';
+    popup.style.transform = 'translate(-50%, -50%)'; 
+    // popup.style.width = '80%';
+     popup.style.height = '80%';
+    //popup.style.padding = '20px';
     popup.style.backgroundColor = 'white';
     popup.style.border = '2px solid black';
     popup.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
     popup.style.zIndex = '1000';
-    popup.style.overflow = 'auto';  // Allows scrolling if content overflows
+    //popup.style.overflow = 'auto';  // Allows scrolling if content overflows
     popup.style.display = 'flex';
     popup.style.flexDirection = 'column';
     popup.style.alignItems = 'center';
     popup.style.justifyContent = 'center';
+    popup.style.display = 'inline-block';  // Size to fit content
+    popup.style.padding = '20px';  // Padding around the content
 
     // Create an image element
     const img = document.createElement('img');
@@ -122,12 +126,12 @@ function openResume(){
 
     // Create and style the close button
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'Close';
+    closeButton.textContent = 'X';
     closeButton.style.position = 'absolute';
     closeButton.style.top = '10px';
     closeButton.style.right = '10px';
     closeButton.style.padding = '10px 20px';
-    closeButton.style.backgroundColor = '#f44336';
+    closeButton.style.backgroundColor = 'black';
     closeButton.style.color = 'white';
     closeButton.style.border = 'none';
     closeButton.style.cursor = 'pointer';
@@ -138,6 +142,13 @@ function openResume(){
 
     // Append the close button to the popup
     popup.appendChild(closeButton);
+
+    document.addEventListener('click', (event) => {
+        // Check if the click was outside the popup
+        if (!popup.contains(event.target) && event.target !== closeButton) {
+            document.body.removeChild(popup);
+        }
+    });
 
     // Append the popup to the body
     document.body.appendChild(popup);
@@ -186,12 +197,12 @@ function openPopup(objectName) {
 
     // Create and style the close button
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'Close';
+    closeButton.textContent = 'X';
     closeButton.style.position = 'absolute';
     closeButton.style.top = '10px';
     closeButton.style.right = '10px';
     closeButton.style.padding = '10px 20px';
-    closeButton.style.backgroundColor = '#f44336';
+    closeButton.style.backgroundColor = 'black';
     closeButton.style.color = 'white';
     closeButton.style.border = 'none';
     closeButton.style.cursor = 'pointer';
@@ -251,10 +262,10 @@ loader.load('edit5.glb', function (gltf) {
             if (node.name === 'photoscreen'){
                 photo = node;
             }
-            if (node.name === 'linkedin'){
+            if (node.name === 'pencil2'){
                 linkedInPen = node;
             }
-            if (node.name === 'github'){
+            if (node.name === 'pencil1'){
                 githubPen = node;
             }
             if (node.name === 'resumescreen'){
