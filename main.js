@@ -57,7 +57,7 @@ animate();
 const raycaster = new THREE.Raycaster();
 const mouse = new THREE.Vector2();
 let intersects = [];
-let laptop, photo, linkedInPen, githubPen; 
+let laptop, photo, linkedInPen, githubPen, resume; 
 
 window.addEventListener('click', (event) => {
     mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
@@ -81,8 +81,66 @@ window.addEventListener('click', (event) => {
         if (object === githubPen){
             openGithub();
         }
+        if (object === resume){
+            openResume();
+        }
+        
     }
 });
+
+function openResume(){
+    // Create the popup container
+    const popup = document.createElement('div');
+    popup.style.position = 'fixed';
+    popup.style.top = '10%';
+    popup.style.left = '10%';
+    popup.style.width = '80%';
+    popup.style.height = '80%';
+    popup.style.padding = '20px';
+    popup.style.backgroundColor = 'white';
+    popup.style.border = '2px solid black';
+    popup.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+    popup.style.zIndex = '1000';
+    popup.style.overflow = 'auto';  // Allows scrolling if content overflows
+    popup.style.display = 'flex';
+    popup.style.flexDirection = 'column';
+    popup.style.alignItems = 'center';
+    popup.style.justifyContent = 'center';
+
+    // Create an image element
+    const img = document.createElement('img');
+    img.style.maxWidth = '100%';
+    img.style.maxHeight = '100%';
+    img.style.objectFit = 'contain';
+
+    // Set the image source based on the object name
+    img.src = `emilyPhoto.JPG`; // Assuming images are stored in the 'images' folder
+
+    // Append the image to the popup
+    popup.appendChild(img);
+
+    // Create and style the close button
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Close';
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '10px';
+    closeButton.style.right = '10px';
+    closeButton.style.padding = '10px 20px';
+    closeButton.style.backgroundColor = '#f44336';
+    closeButton.style.color = 'white';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+
+    closeButton.addEventListener('click', () => {
+        document.body.removeChild(popup);
+    });
+
+    // Append the close button to the popup
+    popup.appendChild(closeButton);
+
+    // Append the popup to the body
+    document.body.appendChild(popup);
+}
 
 function openLinkedIn(){
     window.open("https://www.linkedin.com/in/emily-qin/");
@@ -197,6 +255,9 @@ loader.load('edit4.glb', function (gltf) {
             }
             if (node.name === 'github'){
                 githubPen = node;
+            }
+            if (node.name === 'resumescreen'){
+                resume = node;
             }
         }
     });
