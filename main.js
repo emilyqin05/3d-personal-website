@@ -70,7 +70,7 @@ window.addEventListener('click', (event) => {
         const object = intersects[0].object;
         if (object === laptop) {
             //function to change to a different camera
-            //switchToLaptopCamera();
+            window.location.href = "projects.html";
         }
         if (object === photo){
             openPopup();
