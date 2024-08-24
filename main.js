@@ -4,6 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
+scene.background = new THREE.Color(0xffffff); // Set background color to white
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -235,7 +236,7 @@ const loader = new GLTFLoader();
 // loader.setDRACOLoader( dracoLoader );
 
 // Load a glTF resource
-loader.load('edit4.glb', function (gltf) {
+loader.load('edit5.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
             node.castShadow = true;
