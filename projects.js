@@ -64,3 +64,4 @@ loader.load('projects.glb', function (gltf) {
 }, function (error) {
     console.log('An error happened', error);
 });
+

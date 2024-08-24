@@ -2,9 +2,37 @@
     <head>
         <h1 onclick="window.location.href='index.html';">Emily Qin</h1>
         <link rel="stylesheet" href="projects.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Three.js Project</title>
+        <style>
+            /* Style for the box displaying the HTML content */
+            #html-box {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                width: 300px;
+                height: 400px;
+                border: 2px solid #ccc;
+                background-color: white;
+                overflow: auto;
+                z-index: 100; /* Ensure it appears above the WebGL content */
+                padding: 10px;
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            }
+        </style>
     </head>
-    <div>
-    </div>
+    <body>
+        <!-- Container for the Three.js renderer -->
+        <div id="three-container"></div>
+    
+        <!-- Box displaying the external HTML content -->
+        <iframe id="html-box" src="projectInfo.html"></iframe>
+    
+        <script src="path/to/your/three.js"></script>
+        <script src="path/to/your/script.js"></script>
+    </body>
+    </html>
 	<body>
 		<script type="module" src="/projects.js"></script>
 	</body>
