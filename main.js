@@ -70,7 +70,7 @@ window.addEventListener('click', (event) => {
         const object = intersects[0].object;
         if (object === laptop) {
             //function to change to a different camera
-            switchToLaptopCamera();
+            //switchToLaptopCamera();
         }
         if (object === photo){
             openPopup();
@@ -104,10 +104,6 @@ function openGithub(){
 //     document.body.appendChild(popup);
 // }
 
-function switchToLaptopCamera() {
-    camera = camera2;
-    // Optional: Add any additional logic for the laptop interaction here
-}
 
 
 function openPopup(objectName) {
