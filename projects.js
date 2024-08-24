@@ -28,24 +28,6 @@ const pointLight = new THREE.PointLight(0xffffff, 1.5);
 pointLight.position.set(-10, 10, 10);
 scene.add(pointLight);
 
-// Handle scroll events to zoom in/out
-window.addEventListener('wheel', (event) => {
-    const zoomSpeed = 0.5; // Adjust this value to control zoom speed
-    if (event.deltaY > 0) {
-        // Scrolling down - zoom in
-		camera.position.y -= zoomSpeed;
-        camera.position.z -= zoomSpeed;
-    } else if (event.deltaY < 0) {
-        // Scrolling up - zoom out
-		camera.position.y += zoomSpeed;
-        camera.position.z += zoomSpeed;
-    }
-
-    // Optional: Clamp the camera's y position to prevent excessive zooming
-    camera.position.y = THREE.MathUtils.clamp(camera.position.y, -2, 15); // Adjust min and max values as needed
-	camera.position.z = THREE.MathUtils.clamp(camera.position.z, -2, 15); // Adjust min and max values as needed
-
-});
 
 // Animation loop
 function animate() {
@@ -58,10 +40,7 @@ animate();
 // Instantiate a loader
 const loader = new GLTFLoader();
 
-// // Optional: Provide a DRACOLoader instance to decode compressed mesh data
-// const dracoLoader = new DRACOLoader();
-// dracoLoader.setDecoderPath( '/examples/jsm/libs/draco/' );
-// loader.setDRACOLoader( dracoLoader );
+let laptopScreen;
 
 // Load a glTF resource
 loader.load('projects.glb', function (gltf) {
@@ -72,6 +51,9 @@ loader.load('projects.glb', function (gltf) {
 
             if (node.material) {
                 node.material.needsUpdate = true;
+            }
+            if (node.name === 'laptopscreen'){
+                laptopScreen = node;
             }
         }
     });
