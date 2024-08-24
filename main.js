@@ -4,7 +4,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera1 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(window.devicePixelRatio);
@@ -12,8 +12,14 @@ renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
 // Position the camera
-camera.position.set(0, 15, 15);
-camera.lookAt(0, 4, 0);
+camera1.position.set(0, 15, 15);
+camera1.lookAt(0, 4, 0);
+
+let camera = camera1;
+
+const camera2 = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera2.position.set(0, 5, 2); // Adjust position as needed for a close-up view of the laptop
+camera2.lookAt(0, 4, 0);
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
@@ -67,7 +73,8 @@ window.addEventListener('click', (event) => {
     if (intersects.length > 0) {
         const object = intersects[0].object;
         if (object === laptop) {
-            openPopup();  // Function to open the popup
+            //function to change to a different camera
+            switchToLaptopCamera();
         }
         if (object === photo){
             openPopup();
@@ -100,6 +107,12 @@ function openGithub(){
 //     popup.textContent = 'You clicked on the laptop!';
 //     document.body.appendChild(popup);
 // }
+
+function switchToLaptopCamera() {
+    camera = camera2;
+    // Optional: Add any additional logic for the laptop interaction here
+}
+
 
 function openPopup(objectName) {
     // Create the popup container
