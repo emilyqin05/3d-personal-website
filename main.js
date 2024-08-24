@@ -115,7 +115,7 @@ function openResume(){
     img.style.objectFit = 'contain';
 
     // Set the image source based on the object name
-    img.src = `emilyPhoto.JPG`; // Assuming images are stored in the 'images' folder
+    img.src = `resume.png`; // Assuming images are stored in the 'images' folder
 
     // Append the image to the popup
     popup.appendChild(img);
