@@ -12,7 +12,7 @@ renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
 // Position the camera
-camera.position.set(0, 0.5, 2);
+camera.position.set(0, 0.6, 2);
 camera.lookAt(0, 0.1, 0);
 
 
