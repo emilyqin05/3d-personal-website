@@ -1,0 +1,41 @@
+body {
+    overflow: hidden;
+}
+h1 {
+    font-size: 24px;
+    color: black;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.table {
+    position: relative; /* Ensure the image's position is relative */
+    left: -3px; /* Initial x-coordinate */
+    top: 150px; /* Initial y-coordinate */
+    z-index:1;
+}
+
+.computer {
+    position: relative; /* Ensure the image's position is relative */
+    width: 100%; /* Adjust the size as needed */
+    left: 65px; /* Initial x-coordinate */
+    top: -550px; /* Initial y-coordinate */
+    z-index:3;
+}
+
+.content {
+    position: absolute; /* Use absolute positioning for better control */
+    top: 200px; /* Adjust this value as needed to place the paragraph correctly */
+    left: 50%; /* Center the div horizontally */
+    transform: translateX(-50%); /* Center the div horizontally */
+    z-index: 4; /* Ensure the content is on top of the .svg */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background to improve readability */
+    padding: 20px;
+    width: 70%; /* Adjust width as needed */
+}
+
+.content p {
+    font-size: 16px;
+    color: black;
+    margin: 0;
+}
