@@ -21,6 +21,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Single deploy job since we're just deploying
   deploy:
     environment:
       name: github-pages
@@ -37,15 +38,20 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npx vite build --outDir ./github/workflows
-      - name: Serve build (optional)
-        run: npx serve ./github/workflows
+        run: npm run build
+      - name: Serve and Upload artifact
+        run: |
+          npx serve . -s &
+          sleep 10
+          mkdir -p public
+          cp -r * public/
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './github/workflows'
+          # Upload current directory contents
+          path: './public'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
