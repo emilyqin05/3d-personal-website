@@ -228,11 +228,12 @@ function openPopup(objectName) {
 
     // Add text content
     const text = document.createElement('p');
-    text.textContent = `This is the about page. Here you can add any information related to it.`;
+    text.textContent = `Hi! I’m Emily Qin, a second-year Computing Science and Business student at Simon Fraser University. I’m passionate about using technology to create positive change, whether that’s through building software or exploring roles in tech management. I enjoy being in leadership roles where things are always moving and I am pushed out of my comfort zone! As the Events Director for the SFU Computing Science Student Society, I organize hackathons, career panels, and social events while also chairing volunteer meetings. I’m also the Mentorship Program Coordinator for SFU Women in Computing Science, where I empower the WiCS community by helping new members build connections. When I’m not working on these projects, you’ll probably find me hiking around Vancouver, playing volleyball with my little brother, or hanging out with my cat, Duchess. If you’d like to connect or learn more about what I do, please reach out via LinkedIn. I'm always happy to chat, share more, and learn about you!`;
     text.style.textAlign = 'center';
     text.style.fontSize = '18px';
     text.style.lineHeight = '1.5';
     text.style.margin = '0';
+    text.style.fontFamily = 'Arial, sans-serif'; 
 
     // Append elements to the popup
     popup.appendChild(closeButton);
