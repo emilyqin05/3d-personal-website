@@ -37,13 +37,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Build
-        run: npx serve .
+        run: npx vite build --outDir ./github/workflows
+      - name: Serve build (optional)
+        run: npx serve ./github/workflows
       - name: Setup Pages
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './github/workflows'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
