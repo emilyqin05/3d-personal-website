@@ -14,9 +14,8 @@ document.body.appendChild(renderer.domElement);
 
 // Position the camera
 camera.position.set(0, 15, 15);
-camera.lookAt(0, 4, 0);
-
-
+//camera.lookAt(0, 0, 0);
+camera.lookAt(new THREE.Vector3(0, 4, 0));  // Make sure it looks at the center of your scene or the target object
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
 scene.add(ambientLight);
@@ -60,13 +59,21 @@ const mouse = new THREE.Vector2();
 let intersects = [];
 let laptop, photo, linkedInPen, githubPen, resume; 
 
+
+
 window.addEventListener('click', (event) => {
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
+    mouse.x = (event.clientX / window.innerWidth)*2-0.998;
+    mouse.y = - (event.clientY / window.innerHeight)*2+1.14;
+    // mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+    // mouse.y = - (event.clientY / window.innerHeight) * 2 + 1;
 
     raycaster.setFromCamera(mouse, camera);
     intersects = raycaster.intersectObjects(scene.children);
 
+    // const direction = raycaster.ray.direction.clone().normalize();
+    // const origin = raycaster.ray.origin.clone();
+    // const arrowHelper = new THREE.ArrowHelper(direction, origin, 10, 0xff0000);
+    // scene.add(arrowHelper);
 
     if (intersects.length > 0) {
         const object = intersects[0].object;
@@ -273,7 +280,7 @@ loader.load('edit5.glb', function (gltf) {
             }
         }
     });
-	gltf.scene.position.set(0, -10, -15); // Adjust this to the desired position
+	gltf.scene.position.set(0, -14, -15); // Adjust this to the desired position
     scene.add(gltf.scene);
 }, function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
