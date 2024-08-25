@@ -1,5 +1,5 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/build/three.module.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/examples/jsm/';
 
 
 // Set up the scene, camera, and renderer
