@@ -1,9 +1,8 @@
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/build/three.module.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
-// Set up the scene, camera, and renderer
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(0xffffff); // Set background color to white
+scene.background = new THREE.Color(0xffffff); 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -11,7 +10,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.physicallyCorrectLights = true;
 document.body.appendChild(renderer.domElement);
 
-// Position the camera
+// camera position 
 camera.position.set(0, 0.6, 2);
 camera.lookAt(0, 0.1, 0);
 
@@ -37,12 +36,10 @@ function animate() {
 animate();
 
 
-// Instantiate a loader
 const loader = new GLTFLoader();
 
 let laptopScreen;
 
-// Load a glTF resource
 loader.load('projects1.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
@@ -57,7 +54,7 @@ loader.load('projects1.glb', function (gltf) {
             }
         }
     });
-	gltf.scene.position.set(0, 0, 0); // Adjust this to the desired position
+	gltf.scene.position.set(0, 0, 0); 
     scene.add(gltf.scene);
 }, function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
