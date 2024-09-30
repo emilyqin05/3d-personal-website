@@ -8,30 +8,31 @@ h1 {
     margin-top: 10px;
 }
 
+/*
 .table {
-    position: relative; /* Ensure the image's position is relative */
-    left: -3px; /* Initial x-coordinate */
-    top: 150px; /* Initial y-coordinate */
+    position: relative;
+    left: -3px; 
+    top: 150px; 
     z-index:1;
 }
 
 .computer {
-    position: relative; /* Ensure the image's position is relative */
-    width: 100%; /* Adjust the size as needed */
-    left: 65px; /* Initial x-coordinate */
-    top: -550px; /* Initial y-coordinate */
+    position: relative; 
+    width: 100%; 
+    left: 65px; 
+    top: -550px; 
     z-index:3;
 }
 
 .content {
-    position: absolute; /* Use absolute positioning for better control */
-    top: 200px; /* Adjust this value as needed to place the paragraph correctly */
-    left: 50%; /* Center the div horizontally */
-    transform: translateX(-50%); /* Center the div horizontally */
-    z-index: 4; /* Ensure the content is on top of the .svg */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional: Add a background to improve readability */
+    position: absolute; 
+    top: 200px; 
+    left: 50%; 
+    transform: translateX(-50%);
+    z-index: 4; 
+    background-color: rgba(255, 255, 255, 0.8);
     padding: 20px;
-    width: 70%; /* Adjust width as needed */
+    width: 70%; 
 }
 
 .content p {
@@ -39,3 +40,4 @@ h1 {
     color: black;
     margin: 0;
 }
+*/

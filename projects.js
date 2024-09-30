@@ -1,4 +1,4 @@
-import * as THREE from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/build/three.module.js';
+/*import * as THREE from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/build/three.module.js';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 const scene = new THREE.Scene();
@@ -61,4 +61,4 @@ loader.load('projects1.glb', function (gltf) {
 }, function (error) {
     console.log('An error happened', error);
 });
-
+*/

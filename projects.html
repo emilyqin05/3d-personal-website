@@ -6,12 +6,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>My Projects and Experiences</title>
         <style>
-            #html-box {
+            iframe {
                 position: absolute;
-                top: 128px;
-                right: 170px;
-                width: 900px;
-                height: 455px;
+                top: 50;
+                right: 0;
+                width: 100vw;
+                height: 100vh;
                 border: 0px solid #ccc;
                 background-color: white;
                 overflow: auto;
@@ -19,6 +19,7 @@
                 padding: 10px
             }
         </style>
+        <!--
         <script type="importmap">
             {
                 "imports": {
@@ -26,12 +27,12 @@
                 "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.167.1/examples/jsm/"
                 }
             }
-            </script>
+            </script> -->
     </head>
     <body>
-        <!-- Container for the Three.js renderer -->
+        <!-- Container for the Three.js renderer
         <div id="three-container"></div>
-    
+        -->
         <!-- Box displaying the external HTML content -->
         <iframe id="html-box" src="projectInfo.html"></iframe>
     
