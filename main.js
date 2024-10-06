@@ -2,7 +2,8 @@ import * as THREE from 'https://cdn.jsdelivr.net/npm/three@v0.167.1/build/three.
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 
-// Set up the scene, camera, and renderer
+
+// set up the scene, camera, renderer
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xffffff); 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -44,7 +45,7 @@ window.addEventListener('wheel', (event) => {
 
 });
 
-// Animation loop
+// animation loop
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
@@ -222,9 +223,15 @@ function openPopup(objectName) {
 }
 
 
-const loader = new GLTFLoader();
-// Load a glTF resource
-loader.load('edit5.glb', function (gltf) {
+
+const loaderScene = new GLTFLoader();
+const loaderDiv = document.getElementById('loader');
+
+// show the loader
+loaderDiv.style.display = 'block';
+
+// load a glTF resource
+loaderScene.load('edit5.glb', function (gltf) {
     gltf.scene.traverse(function (node) {
         if (node.isMesh) {
             node.castShadow = true;
@@ -250,10 +257,17 @@ loader.load('edit5.glb', function (gltf) {
             }
         }
     });
-	gltf.scene.position.set(0, -14, -15); 
+    
+    gltf.scene.position.set(0, -14, -15); 
     scene.add(gltf.scene);
+    
+    // hide the loader after model renders
+    loaderDiv.style.display = 'none';
+
 }, function (xhr) {
     console.log((xhr.loaded / xhr.total * 100) + '% loaded');
 }, function (error) {
     console.log('An error happened', error);
+    // error
+    loaderDiv.style.display = 'none';
 });
